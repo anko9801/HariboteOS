@@ -1,0 +1,32 @@
+text size :    231(0x000E7)
+data size :     19(0x00013)
+bss  size :      0(0x00000)
+
+0x00000024 : (.text)
+0x00000024 : _HariMain
+0x00000081 : _api_end
+0x00000081 : (.text)
+0x00000088 : _api_openwin
+0x00000088 : (.text)
+0x000000AA : _api_putstrwin
+0x000000AA : (.text)
+0x000000D2 : _api_boxfillwin
+0x000000D2 : (.text)
+0x000000FA : __alloca
+0x000000FA : (.text)
+0x00000102 : (.text)
+0x00000102 : _HariStartup
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000400 : (.data)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)

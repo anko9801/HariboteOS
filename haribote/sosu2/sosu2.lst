@@ -1,0 +1,61 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_api_end
+     7 00000000                                 	EXTERN	_sprintf
+     8 00000000                                 	EXTERN	_api_putstr0
+     9 00000000                                 [FILE "sosu2.c"]
+    10                                          [SECTION .data]
+    11 00000000                                 LC0:
+    12 00000000 25 64 20 00                     	DB	"%d ",0x00
+    13                                          [SECTION .text]
+    14 00000000                                 	GLOBAL	_HariMain
+    15 00000000                                 _HariMain:
+    16 00000000 55                              	PUSH	EBP
+    17 00000001 89 E5                           	MOV	EBP,ESP
+    18 00000003 57                              	PUSH	EDI
+    19 00000004 56                              	PUSH	ESI
+    20 00000005 31 F6                           	XOR	ESI,ESI
+    21 00000007 53                              	PUSH	EBX
+    22 00000008 50                              	PUSH	EAX
+    23 00000009 50                              	PUSH	EAX
+    24 0000000A                                 L6:
+    25 0000000A C6 04 3E 00                     	MOV	BYTE [ESI+EDI*1],0
+    26 0000000E 46                              	INC	ESI
+    27 0000000F 81 FE 0000270F                  	CMP	ESI,9999
+    28 00000015 7E F3                           	JLE	L6
+    29 00000017 BE 00000002                     	MOV	ESI,2
+    30 0000001C                                 L17:
+    31 0000001C 80 3C 3E 00                     	CMP	BYTE [ESI+EDI*1],0
+    32 00000020 74 16                           	JE	L23
+    33 00000022                                 L9:
+    34 00000022 46                              	INC	ESI
+    35 00000023 81 FE 0000270F                  	CMP	ESI,9999
+    36 00000029 7E F1                           	JLE	L17
+    37 0000002B E8 [00000000]                   	CALL	_api_end
+    38 00000030 8D 65 F4                        	LEA	ESP,DWORD [-12+EBP]
+    39 00000033 5B                              	POP	EBX
+    40 00000034 5E                              	POP	ESI
+    41 00000035 5F                              	POP	EDI
+    42 00000036 5D                              	POP	EBP
+    43 00000037 C3                              	RET
+    44 00000038                                 L23:
+    45 00000038 56                              	PUSH	ESI
+    46 00000039 8D 5D EC                        	LEA	EBX,DWORD [-20+EBP]
+    47 0000003C 68 [00000000]                   	PUSH	LC0
+    48 00000041 53                              	PUSH	EBX
+    49 00000042 E8 [00000000]                   	CALL	_sprintf
+    50 00000047 53                              	PUSH	EBX
+    51 00000048 E8 [00000000]                   	CALL	_api_putstr0
+    52 0000004D 83 C4 10                        	ADD	ESP,16
+    53 00000050 8D 04 36                        	LEA	EAX,DWORD [ESI+ESI*1]
+    54 00000053 3D 0000270F                     	CMP	EAX,9999
+    55 00000058 7F C8                           	JG	L9
+    56 0000005A                                 L16:
+    57 0000005A C6 04 38 01                     	MOV	BYTE [EAX+EDI*1],1
+    58 0000005E 01 F0                           	ADD	EAX,ESI
+    59 00000060 3D 0000270F                     	CMP	EAX,9999
+    60 00000065 7E F3                           	JLE	L16
+    61 00000067 EB B9                           	JMP	L9
